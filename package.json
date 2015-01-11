@@ -1,0 +1,14 @@
+{
+  "name": "dega",
+  "version": "0.0.1",
+  "description": "Plain JavaScript Event Delegation Library",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "event",
+    "delegation"
+  ],
+  "author": "Stanislav Sysoev <@d4rkr00t>",
+  "license": "MIT"
+}
