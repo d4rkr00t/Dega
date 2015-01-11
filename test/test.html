@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dega Test</title>
+
+    <style>
+        .click {
+            width: 200px;
+            display: block;
+            padding: 24px 0;
+            text-align: center;
+            background: #ccc;
+            margin-bottom: 2px;
+        }
+        .click:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="click click-target-1">Click Me — Div</div>
+    <a href="#test" class="click click-target-2">Click Me — Not Prevent</a>
+    <a href="#test2" class="click click-target-3">Click Me — Prevent</a>
+    <a href="#test3" class="click click-target-4">Click Me — Fires Once</a>
+    <a href="#test4" class="click click-target-5">Click Me — With useCapture</a>
+    <a href="#test5" class="click click-target-6">Click Me — Without useCapture</a>
+
+    <br>
+    <br>
+    <br>
+
+    <hr>
+
+    <br>
+    <br>
+
+    <input type="text" class="focus focus-target blur-target" placeholder="Focus and Blur">
+
+    <script src="../dega.js"></script>
+    <script src="test.js"></script>
+</body>
+</html>

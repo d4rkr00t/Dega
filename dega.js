@@ -20,7 +20,7 @@
 
     function _matchElem(el, selector) {
         if (selector.match(/^\./)) {
-            return el.classList.contains(selector.replace(/^\./, ''));
+            return el.classList && el.classList.contains(selector.replace(/^\./, ''));
         } else if (selector.match(/^#/)) {
             return el.id === selector.replace(/^#/, '');
         } else {
@@ -28,9 +28,12 @@
         }
     }
 
-    function _findEventListener(eventListeners, callback, useCapture) {
+    function _findEventListener(eventListeners, type, selector, callback, useCapture) {
         for (var i = 0; i < eventListeners.length; i++) {
-            if (eventListeners[i].original === callback && eventListeners[i].useCapture === useCapture) {
+            if (eventListeners[i].original === callback &&
+                eventListeners[i].useCapture === useCapture &&
+                eventListeners[i].type === type &&
+                eventListeners[i].selector === selector) {
                 return eventListeners[i];
             }
         }
@@ -42,22 +45,23 @@
         return type === 'blur' || type === 'focus' || useCapture;
     }
 
-    function _generateEventListener(selector, callback, useCapture) {
+    function _generateEventListener(type, selector, callback, useCapture) {
         return {
+            type: type,
+            selector: selector,
+            useCapture: _generateUseCapture(type, useCapture),
+
             original: callback,
-            useCapture: useCapture ,
             generated: function(e) {
                 var el = e.target;
 
-                while (true) {
+                while (el) {
                     if (_matchElem(el, selector)) {
                         callback.call(el, e);
                         break;
                     } else {
                         el = el.parentNode;
                     }
-
-                    if (!el) { break; }
                 }
             }
         };
@@ -72,7 +76,7 @@
             }
 
             var dega = new Dega(elem);
-            _instances.push(elem);
+            _instances.push(dega);
             return dega;
         }
 
@@ -81,25 +85,29 @@
         }
 
         this.elem = elem;
-        this._eventListeners = {};
+        this._eventListeners = [];
     };
 
     Dega.prototype.on = function(type, selector, callback, useCapture) {
-        useCapture = _generateUseCapture(type, useCapture);
-
-        var eventListener = _generateEventListener(selector, callback, useCapture);
+        var eventListener = _generateEventListener(type, selector, callback, useCapture);
 
         this._eventListeners.push(eventListener);
-        this.elem.addEventListener(type, eventListener.generatedCallback, eventListener.useCapture);
+        this.elem.addEventListener(type, eventListener.generated, eventListener.useCapture);
+
+        return this;
     };
 
     Dega.prototype.off = function(type, selector, callback, useCapture) {
         useCapture = _generateUseCapture(type, useCapture);
 
-        var eventListener = _findEventListener(this._eventListeners, callback, useCapture);
+        var eventListener = _findEventListener(this._eventListeners, type, selector, callback, useCapture);
 
         if (eventListener) {
-            this.elem.removeEventListener(type, eventListener.generatedCallback, eventListener.useCapture);
+            this.elem.removeEventListener(type, eventListener.generated, eventListener.useCapture);
         }
+
+        return this;
     };
+
+    return Dega;
 });
