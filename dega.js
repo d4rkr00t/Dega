@@ -104,6 +104,8 @@
 
         if (eventListener) {
             this.elem.removeEventListener(type, eventListener.generated, eventListener.useCapture);
+
+            this._eventListeners.splice(this._eventListeners.indexOf(eventListener), 1);
         }
 
         return this;
