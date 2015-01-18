@@ -1,7 +1,7 @@
 /**
  * @author Stanislav Sysoev <@d4rkr00t>
  * @license MIT
- * @version 0.0.1
+ * @version 0.1.0
  *
  * @description
  * Event delegation library on plain JavaScript
