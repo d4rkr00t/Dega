@@ -42,8 +42,11 @@ describe('Dega', function() {
                     expect(called).toBe(true);
                 });
 
-                it('should change url', function() {
-                    expect(window.location.hash).toBe('#test');
+                it('should change url', function(done) {
+                    setTimeout(function() {
+                        expect(window.location.hash).toBe('#test');
+                        done();
+                    }, 10);
                 });
             });
 
@@ -71,8 +74,11 @@ describe('Dega', function() {
                     expect(called).toBe(true);
                 });
 
-                it('should change url', function() {
-                    expect(window.location.hash).not.toBe('#test1');
+                it('should not change url', function(done) {
+                    setTimeout(function() {
+                        expect(window.location.hash).not.toBe('#test1');
+                        done();
+                    }, 10);
                 });
             });
 
@@ -104,8 +110,11 @@ describe('Dega', function() {
                         expect(called).toBe(true);
                     });
 
-                    it('should change url', function() {
-                        expect(window.location.hash).toBe('#test3');
+                    it('should change url', function(done) {
+                        setTimeout(function() {
+                            expect(window.location.hash).toBe('#test3');
+                            done();
+                        }, 10);
                     });
                 });
 
@@ -135,8 +144,11 @@ describe('Dega', function() {
                         expect(called).toBe(true);
                     });
 
-                    it('should change url', function() {
-                        expect(window.location.hash).not.toBe('#test4');
+                    it('should not change url', function(done) {
+                        setTimeout(function() {
+                            expect(window.location.hash).not.toBe('#test4');
+                            done();
+                        }, 10);
                     });
                 });
             });
@@ -164,8 +176,11 @@ describe('Dega', function() {
                     expect(called).toBe(true);
                 });
 
-                it('should change url', function() {
-                    expect(window.location.hash).toBe('#test5');
+                it('should change url', function(done) {
+                    setTimeout(function() {
+                        expect(window.location.hash).toBe('#test5');
+                        done();
+                    }, 10);
                 });
             });
 
@@ -191,8 +206,11 @@ describe('Dega', function() {
                     expect(called).toBe(true);
                 });
 
-                it('should change url', function() {
-                    expect(window.location.hash).toBe('#test6');
+                it('should change url', function(done) {
+                    setTimeout(function() {
+                        expect(window.location.hash).toBe('#test6');
+                        done();
+                    }, 10);
                 });
             });
         });
