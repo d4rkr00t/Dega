@@ -17,7 +17,7 @@
     "newcap": true,
     "noarg": true,
     "noempty": true,
-    "nonew": true,
+    "nonew": false,
     "quotmark": "single",
     "sub": true,
     "trailing": true,
@@ -30,6 +30,9 @@
         "console",
         "describe",
         "beforeEach",
-        "afterEach"
+        "afterEach",
+        "it",
+        "expect",
+        "Dega"
     ]
 }

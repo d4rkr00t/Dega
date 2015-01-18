@@ -103,6 +103,10 @@
      * @param {DomElem|String} elem — dom elem or selector for document.querySelector
      */
     var Dega = function(elem) {
+        if (typeof elem === 'string') {
+            elem = document.querySelector(elem);
+        }
+
         if (!(this instanceof Dega)) {
             for (var i = 0; i < _instances.length; i++) {
                 if (_instances[i].elem === elem) {
@@ -113,10 +117,6 @@
             var dega = new Dega(elem);
             _instances.push(dega);
             return dega;
-        }
-
-        if (typeof elem === 'string') {
-            elem = document.querySelector(elem);
         }
 
         this.elem = elem;
