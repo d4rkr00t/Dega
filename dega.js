@@ -18,6 +18,13 @@
 })(this, function() {
     var _instances = [];
 
+    /**
+     * Check if elem matches to selector
+     * @private
+     * @param {Object} el
+     * @param {String} selector — .class | #id | div
+     * @return {Boolean|Undefined}
+     */
     function _matchElem(el, selector) {
         if (selector.match(/^\./)) {
             return el.classList && el.classList.contains(selector.replace(/^\./, ''));
@@ -28,6 +35,16 @@
         }
     }
 
+    /**
+     * Search for generated event listener by original
+     * @private
+     * @param {Array} eventListeners — list of event listeners
+     * @param {String} type — event type like 'click' | 'focus' | 'blur'
+     * @param {String} selector — .class | #id | div
+     * @param {Function} callback — user passed callback
+     * @param {Boolean} useCapture
+     * @return {Object|Boolean}
+     */
     function _findEventListener(eventListeners, type, selector, callback, useCapture) {
         for (var i = 0; i < eventListeners.length; i++) {
             if (eventListeners[i].original === callback &&
@@ -41,10 +58,24 @@
         return false;
     }
 
+    /**
+     * Generates useCapture for event listeners, if blur or focus we should always use useCapture
+     * @private
+     * @param {String} type — event type like 'click' | 'focus' | 'blur'
+     * @param {Boolean} useCapture — user defined useCapture
+     * @return {Boolean}
+     */
     function _generateUseCapture(type, useCapture) {
         return type === 'blur' || type === 'focus' || useCapture;
     }
 
+    /**
+     * Generates eventListener item for Dega._eventListeners list
+     * @param {String} type — event type like 'click' | 'focus' | 'blur'
+     * @param {String} selector — .class | #id | div
+     * @param {Function} callback — user passed callback
+     * @param {Boolean} useCapture
+     */
     function _generateEventListener(type, selector, callback, useCapture) {
         return {
             type: type,
@@ -66,7 +97,11 @@
             }
         };
     }
-
+    /**
+     * Creates a new Dega Instance
+     * @class
+     * @param {DomElem|String} elem — dom elem or selector for document.querySelector
+     */
     var Dega = function(elem) {
         if (!(this instanceof Dega)) {
             for (var i = 0; i < _instances.length; i++) {
@@ -80,7 +115,7 @@
             return dega;
         }
 
-        if (typeof elem === 'String') {
+        if (typeof elem === 'string') {
             elem = document.querySelector(elem);
         }
 
@@ -88,6 +123,14 @@
         this._eventListeners = [];
     };
 
+    /**
+     * Subscribe on event
+     * @param {String} type — event type like 'click' | 'focus' | 'blur'
+     * @param {String} selector — .class | #id | div
+     * @param {Function} callback — user passed callback
+     * @param {Boolean} [useCapture]
+     * @return {Dega} this
+     */
     Dega.prototype.on = function(type, selector, callback, useCapture) {
         var eventListener = _generateEventListener(type, selector, callback, useCapture);
 
@@ -97,6 +140,14 @@
         return this;
     };
 
+    /**
+     * Unsubscribe from event
+     * @param {String} type — event type like 'click' | 'focus' | 'blur'
+     * @param {String} selector — .class | #id | div
+     * @param {Function} callback — user passed callback
+     * @param  {Boolean} [useCapture]
+     * @return {Dega} this
+     */
     Dega.prototype.off = function(type, selector, callback, useCapture) {
         useCapture = _generateUseCapture(type, useCapture);
 
