@@ -1,6 +1,6 @@
 {
   "name": "dega",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plain JavaScript Event Delegation Library",
   "scripts": {
     "test": "karma start"
