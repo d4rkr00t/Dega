@@ -2,19 +2,23 @@
   "name": "dega",
   "version": "0.1.1",
   "description": "Plain JavaScript Event Delegation Library",
-  "scripts": {
-    "test": "karma start"
-  },
+  "author": "Stanislav Sysoev <@d4rkr00t>",
+  "license": "MIT",
   "keywords": [
     "event",
     "delegation"
   ],
+  "main": "dega.js",
+  "scripts": {
+    "test": "karma start"
+  },
   "repository": {
     "type": "git",
     "url" : "https://github.com/d4rkr00t/Dega"
   },
-  "author": "Stanislav Sysoev <@d4rkr00t>",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/d4rkr00t/Dega/issues"
+  },
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.0",
