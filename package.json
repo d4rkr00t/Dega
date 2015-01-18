@@ -9,6 +9,10 @@
     "event",
     "delegation"
   ],
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/d4rkr00t/Dega"
+  },
   "author": "Stanislav Sysoev <@d4rkr00t>",
   "license": "MIT",
   "devDependencies": {
