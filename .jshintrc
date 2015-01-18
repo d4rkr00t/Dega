@@ -1,0 +1,32 @@
+{
+    "browser": true,
+    "debug": false,
+    "devel": false,
+    "eqeqeq": true,
+    "es3": false,
+    "evil": true,
+    "expr": true,
+    "forin": true,
+    "freeze": false,
+    "immed": true,
+    "jquery": false,
+    "latedef": true,
+    "maxdepth": 4,
+    "maxlen": 120,
+    "maxparams": 5,
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "nonew": true,
+    "quotmark": "single",
+    "sub": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    "predef": [
+        "define",
+        "module",
+        "require",
+        "console"
+    ]
+}
