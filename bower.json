@@ -1,0 +1,29 @@
+{
+  "name": "dega",
+  "main": "dega.js",
+  "version": "0.1.3",
+  "homepage": "https://github.com/d4rkr00t/Dega",
+  "authors": [
+    "Stanislav Sysoev <@d4rkr00t>"
+  ],
+  "description": "Event delegation library on plain JavaScript.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "event",
+    "delegation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "gulpfile.js",
+    "karma.conf.js"
+  ]
+}
