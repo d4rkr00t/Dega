@@ -27,7 +27,7 @@
      */
     function _matchElem(el, selector) {
         if (selector.match(/^\./)) {
-            return el.classList && el.classList.contains(selector.replace(/^\./, ''));
+            return el.className && el.className.split(' ').indexOf(selector.replace(/^\./, '')) !== -1;
         } else if (selector.match(/^#/)) {
             return el.id === selector.replace(/^#/, '');
         } else {
