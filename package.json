@@ -1,6 +1,6 @@
 {
   "name": "dega",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Plain JavaScript Event Delegation Library",
   "author": "Stanislav Sysoev <@d4rkr00t>",
   "license": "MIT",

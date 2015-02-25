@@ -4,7 +4,7 @@ Event delegation library on plain JavaScript.
 
 > Simple, small only 1.2kb compressed and about 620 bytes gzipped.
 
-Tested on latest Chrome, Firefox, Safari.
+Tested on latest Chrome, Firefox, Safari, Opera, IE9+.
 
 ## Instalation
 
@@ -60,3 +60,5 @@ Dega('tag')
 ## TODO
 * Remove All Events by Selector
 * Remove All Events by Type
+* Use querySelectorAll instead of querySelector
+* Add more test cases
