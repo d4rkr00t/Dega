@@ -69,5 +69,4 @@ I don't know how long link will work, so there are some screenshots:
 ## TODO
 * Remove All Events by Selector
 * Remove All Events by Type
-* Use querySelectorAll instead of querySelector
 * Add more test cases

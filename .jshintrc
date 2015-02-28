@@ -14,7 +14,7 @@
     "maxdepth": 4,
     "maxlen": 120,
     "maxparams": 5,
-    "newcap": true,
+    "newcap": false,
     "noarg": true,
     "noempty": true,
     "nonew": false,

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dega Test</title>
+
+    <style>
+        html {
+            background-color: #F3F3F6;
+        }
+
+        body {
+            width: 600px;
+            margin: 0 auto;
+            padding: 27px 18px;
+            font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+        }
+
+        a {
+            color: #69606B;
+        }
+
+        a:hover {
+            color: #F7C04F;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #D8D8D8;
+            margin: 27px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="http://sysoev.org/posts/dega-event-delegation.html" class="link">Dega Link</a>
+
+    <hr>
+
+    <input type="text" class="input">
+
+    <hr>
+
+    <a href="#" class="remove">Remove Events</a>
+
+    <hr>
+
+    <div class="stop-propagation-test">
+        <div class="interceptor">
+            <a href="#1" class="link-with-stop-propagation">Link with stop propagation</a>
+        </div>
+    </div>
+
+    <script src="../dega.js"></script>
+    <script>
+        var log = function () {
+            !window.console ?
+                console.log.apply(console, Array.prototype.slice.apply(arguments)) :
+                alert.apply(this, arguments);
+        };
+
+        var clickHandler = function (e) {
+                e.preventDefault();
+                log('Dega Link clicked');
+            },
+            stopProp = function (e) {
+                e.stopPropagation();
+                log('Stop Propagation');
+            },
+            afterStopProp = function (e) {
+                e.stopPropagation();
+                log('Propagation wasn\'t stopped!');
+            },
+            focusHandler = function (e) {
+                e.preventDefault();
+                log('Focused');
+            },
+            blurHandler = function (e) {
+                e.preventDefault();
+                log('Blurred');
+            },
+            removeHandler = function (e) {
+                e.preventDefault();
+
+                log('Events removed');
+
+                Dega(document).off('click', '.link', clickHandler);
+                Dega(document).off('focus', 'input', focusHandler);
+                Dega(document).off('blur', '.input', blurHandler);
+                Dega(document).off('blur', '.remove', removeHandler);
+
+                Dega('.interceptor').off('click', '.link-with-stop-propagation', stopProp);
+                Dega('.stop-propagation-test').off('click', '.link-with-stop-propagation', afterStopProp);
+            };
+
+        Dega(document).on('click', '.link', clickHandler);
+        Dega(document).on('focus', 'input', focusHandler);
+        Dega(document).on('blur', '.input', blurHandler);
+        Dega(document).on('blur', '.remove', removeHandler);
+
+        Dega('.interceptor').on('click', '.link-with-stop-propagation', stopProp);
+        Dega('.stop-propagation-test').on('click', '.link-with-stop-propagation', afterStopProp);
+    </script>
+</body>
+</html>

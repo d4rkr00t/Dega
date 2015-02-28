@@ -14,7 +14,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'dega.js',
-      'test/*.js'
+      'tests/auto/*.js'
     ],
 
     // test results reporter to use

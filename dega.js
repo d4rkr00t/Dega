@@ -115,7 +115,9 @@
             }
 
             var dega = new Dega(elem);
+
             _instances.push(dega);
+
             return dega;
         }
 
